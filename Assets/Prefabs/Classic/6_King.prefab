@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8957448932d6845bf0444f26a0cc7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 6
 --- !u!1 &4748728399681082101
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026dcefd26255b54b81ccab13a72eb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 6
   enemy: 0
   SFX: {fileID: 1446567102795361423, guid: fa704e7ecf0c1554cbbf6138def777d4, type: 3}
   evolveSound: {fileID: 1236119842313493971, guid: 8af8ffa0a57522b40ad856c392752b51,
@@ -375,6 +375,26 @@ Transform:
   m_Father: {fileID: 4748728399681082096}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4855282783400397031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a6a2f63cbba5c2445a5a2ae4d147930b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4855282783400431175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8660402900613816216
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4855282783400397031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: a6a2f63cbba5c2445a5a2ae4d147930b, type: 3}
 --- !u!1001 &1271454684747232415
 PrefabInstance:
   m_ObjectHideFlags: 0

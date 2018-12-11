@@ -48,12 +48,13 @@ public class PieceScript : MonoBehaviour
         if (!enemy)
         {
             if (selected && !pathFound) { moveOptions.SetActive(true); selectLight.SetActive(true); if (materialScript != null) materialScript.selected = true; }
-            else {
+            else
+            {
                 moveOptions.SetActive(false);
                 selectLight.SetActive(false);
-                if(materialScript != null)
-                materialScript.selected = false; 
-}
+                if (materialScript != null)
+                    materialScript.selected = false;
+            }
 
 
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -119,7 +120,6 @@ public class PieceScript : MonoBehaviour
                         {
                             if (!pathFound)
                             {
-                                print(hit.collider.name);
                                 path[0] = (transform.position + Vector3.up * selectedOffset);
                                 path[1] = (moveHit.collider.transform.position + Vector3.up * selectedOffset);
                                 path[2] = (moveHit.collider.transform.position);
@@ -139,9 +139,10 @@ public class PieceScript : MonoBehaviour
                     }
                 }
 
-                else if (Physics.Raycast(ray, out hit) && !SpawnScript.hasSelected)
+                else if (Physics.Raycast(ray, out hit) && !SpawnScript.hasSelected && !SpawnScript.isMoving)
                 {
-                    if (hit.collider.gameObject == gameObject.transform.GetChild(0).gameObject || hit.collider.gameObject == gameObject.transform.GetChild(1).gameObject)
+                    if (hit.collider.transform.IsChildOf(transform))
+                    //     if (hit.collider.gameObject == gameObject.transform.GetChild(0).gameObject || hit.collider.gameObject == gameObject.transform.GetChild(1).gameObject)
                     {
                         selected = true;
                         if (SFX != null) Instantiate(SFX, transform.position, transform.rotation);
@@ -162,6 +163,7 @@ public class PieceScript : MonoBehaviour
     {
         if (pathFound)
         {
+            SpawnScript.isMoving = true;
             if (!reachedPath[0])
             {
 
@@ -190,6 +192,7 @@ public class PieceScript : MonoBehaviour
                     transform.position = path[2]; reachedPath[2] = true; selected = false; pathFound = false; reachedPath[0] = false; reachedPath[1] = false; reachedPath[2] = false;
                     if (!executeOnce) SpawnScript.createObject = true;
                     SpawnScript.hasSelected = false;
+                    SpawnScript.isMoving = false;
 
                 }
             }

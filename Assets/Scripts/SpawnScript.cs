@@ -18,6 +18,8 @@ public class SpawnScript : MonoBehaviour
     public List<GameObject> randomPoints;
     public int RNG;
     public static bool hasSelected;
+    public static bool isMoving;
+    public bool showSelected;
     public static bool createObject;
     // Use this for initialization
     void Start()
@@ -29,7 +31,9 @@ public class SpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        showSelected = hasSelected;
+        
+             
         text.text = "Score: " + points;
         if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         if (createObject) { createObject = false; SpawnRandom(); }

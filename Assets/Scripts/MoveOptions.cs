@@ -66,7 +66,8 @@ public class MoveOptions : MonoBehaviour
                 if (other.GetComponent<IDScript>().ID == ID)
                 {
                     canSet = false;
-                    isActive = true; }
+                    isActive = true;
+                }
         }
         else if (!offensiveTile && !blocked && !isBlocking && canSet)
         {
@@ -77,7 +78,7 @@ public class MoveOptions : MonoBehaviour
             }
         }
 
-        }
+    }
     public void EnableCollision() { }
     public void DisableCollision() { }
 
