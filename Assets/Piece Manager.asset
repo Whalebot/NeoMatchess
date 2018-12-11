@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d9bbfff8bc04c4e94590314336539d, type: 3}
+  m_Name: Piece Manager
+  m_EditorClassIdentifier: 
+  playerPieces:
+  - {fileID: 288083430209650379, guid: 3f3255ee91b5ca24897d2a45d5c45aed, type: 3}
+  - {fileID: 5811083753472884416, guid: 4a4156382cd287b4cb2a19455e4fd747, type: 3}
+  - {fileID: 1707871138717533321, guid: 66c3874f8f029e640b3d328441f900b6, type: 3}
+  - {fileID: 3448859650729275575, guid: 0e0e4149b9d0df442b0f042452eec8bd, type: 3}
+  - {fileID: 6396427677097437106, guid: 8299d69ebdabb504296c496c122cfbc5, type: 3}
+  - {fileID: 8610417227090477790, guid: 0e01eb342e1ee00469cc93443d8dfdec, type: 3}
+  enemyPieces:
+  - {fileID: 3803703023566989299, guid: a2b5b2aec5cf47d499ca664f8075f597, type: 3}
+  - {fileID: 2529408921579446197, guid: f3fcdb6a676b70a4eabb3e70c49be607, type: 3}
+  - {fileID: 1707871138717533321, guid: 66c3874f8f029e640b3d328441f900b6, type: 3}
+  - {fileID: 3448859650729275575, guid: 0e0e4149b9d0df442b0f042452eec8bd, type: 3}
+  - {fileID: 6396427677097437106, guid: 8299d69ebdabb504296c496c122cfbc5, type: 3}
+  - {fileID: 8610417227090477790, guid: 0e01eb342e1ee00469cc93443d8dfdec, type: 3}
