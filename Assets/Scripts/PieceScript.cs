@@ -47,7 +47,12 @@ public class PieceScript : MonoBehaviour
     {
         if (!enemy)
         {
-            if (selected && !pathFound) { moveOptions.SetActive(true); selectLight.SetActive(true); if (materialScript != null) materialScript.selected = true; }
+            if (selected && !pathFound)
+            {
+                moveOptions.SetActive(true); selectLight.SetActive(true);
+                if (materialScript != null)
+                    materialScript.selected = true;
+            }
             else
             {
                 moveOptions.SetActive(false);
@@ -213,7 +218,7 @@ public class PieceScript : MonoBehaviour
         {
             if (other.CompareTag("Evolve") && !executeOnce)
             {
-                print("Obama");
+          
                 if (other.GetComponent<EvolveTile>().enemy && enemy)
                     StartCoroutine("Evolve", other);
                 else if (!other.GetComponent<EvolveTile>().enemy && !enemy)
@@ -232,13 +237,14 @@ public class PieceScript : MonoBehaviour
         if (selected) SpawnScript.createObject = true;
         print("Evolve");
         executeOnce = true;
-        materialScript.Dissolve();
+        if (materialScript != null)
+            materialScript.Dissolve();
         yield return new WaitForSeconds(mergeTime);
         SpawnScript.points = SpawnScript.points + (int)Mathf.Pow(2, ID);
         SpawnScript.hasSelected = false;
         if (evolveSound != null) Instantiate(evolveSound, transform.position, transform.rotation);
         Instantiate(particle, transform.position, transform.rotation);
-        Instantiate(evolutionTarget, other.transform.position, other.transform.rotation);
+        Instantiate(evolutionTarget, transform.position, transform.rotation);
         Destroy(gameObject);
 
     }
@@ -247,14 +253,15 @@ public class PieceScript : MonoBehaviour
     {
 
         executeOnce = true;
-        materialScript.Dissolve();
+        if (materialScript != null)
+            materialScript.Dissolve();
         yield return new WaitForSeconds(mergeTime);
         if (mergeSound != null) Instantiate(mergeSound, transform.position, transform.rotation);
         SpawnScript.createObject = true;
         SpawnScript.points = SpawnScript.points + (int)Mathf.Pow(2, ID);
         Instantiate(particle, transform.position, transform.rotation);
-        Instantiate(evolutionTarget, other.transform.parent.position, other.transform.parent.rotation);
-        Destroy(other.transform.parent.gameObject);
+        Instantiate(evolutionTarget, transform.position, transform.rotation);
+        Destroy(other.transform.parent.parent.gameObject);
         Destroy(gameObject);
 
     }

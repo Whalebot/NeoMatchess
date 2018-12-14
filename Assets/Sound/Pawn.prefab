@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605513ebaba8a0c4da6c85c56a478b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 2
+  lifeTime: 10
 --- !u!82 &5520506171152203975
 AudioSource:
   m_ObjectHideFlags: 0

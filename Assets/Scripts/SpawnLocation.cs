@@ -8,6 +8,7 @@ public class SpawnLocation : MonoBehaviour
     public int pieceID;
     public bool playerPiece;
     public bool hasPiece;
+    public bool hasSpawned;
     public PieceManager pieceManager;
     // Start is called before the first frame update
     void Start()
@@ -20,23 +21,25 @@ public class SpawnLocation : MonoBehaviour
     {
         if (Input.GetKeyDown("q")) LoadGame();
         if (Input.GetKeyDown("s")) SaveGame();
-        if (Input.GetKeyDown("w")) print("Position " + positionID + " contains " +GameData.savedPiece[positionID-1]);
+        if (Input.GetKeyDown("w")) print("Position " + positionID + " contains " + GameDataManager.savedPiece[positionID - 1]);
         if (!hasPiece)
         {
         }
     }
     public void LoadGame()
     {
-        if (pieceID > 0 && !hasPiece)
+        if (GameDataManager.savedPiece[positionID - 1] != 0 && !hasPiece)
         {
-            if (!playerPiece) { Instantiate(pieceManager.enemyPieces[GameData.savedPiece[positionID-1]], transform.position, Quaternion.identity); }
+            if (!playerPiece) { Instantiate(pieceManager.enemyPieces[GameDataManager.savedPiece[positionID - 1] - 1], transform.position, Quaternion.identity); }
 
-            else { Instantiate(pieceManager.playerPieces[GameData.savedPiece[positionID-1]], transform.position, Quaternion.identity); }
+            else
+            { Instantiate(pieceManager.playerPieces[GameDataManager.savedPiece[positionID - 1] - 1], transform.position, Quaternion.identity); }
         }
     }
 
-    public void SaveGame() {
-        GameData.savedPiece[positionID-1] = pieceID;
+    public void SaveGame()
+    {
+        GameDataManager.savedPiece[positionID - 1] = pieceID;
     }
 
     public void ResetValues()
@@ -49,7 +52,7 @@ public class SpawnLocation : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Piece")) { pieceID = other.GetComponentInParent<PieceScript>().ID; hasPiece = true; }
+        if (other.CompareTag("Piece")) { pieceID = other.transform.parent.GetComponentInParent<PieceScript>().ID; hasPiece = true; }
 
     }
 
