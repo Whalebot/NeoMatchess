@@ -40,6 +40,7 @@ public class PieceScript : MonoBehaviour
     void Start()
     {
         materialScript = transform.GetChild(0).GetComponent<MaterialScript>();
+        GameDataManager.saveGame = true;
     }
 
     // Update is called once per frame
@@ -195,9 +196,10 @@ public class PieceScript : MonoBehaviour
                 if (Vector3.Distance(transform.position, path[2]) < marginOfError)
                 {
                     transform.position = path[2]; reachedPath[2] = true; selected = false; pathFound = false; reachedPath[0] = false; reachedPath[1] = false; reachedPath[2] = false;
-                    if (!executeOnce) SpawnScript.createObject = true;
+                    if (!executeOnce) { SpawnScript.createObject = true;  }
                     SpawnScript.hasSelected = false;
                     SpawnScript.isMoving = false;
+
 
                 }
             }
@@ -218,7 +220,7 @@ public class PieceScript : MonoBehaviour
         {
             if (other.CompareTag("Evolve") && !executeOnce)
             {
-          
+
                 if (other.GetComponent<EvolveTile>().enemy && enemy)
                     StartCoroutine("Evolve", other);
                 else if (!other.GetComponent<EvolveTile>().enemy && !enemy)
@@ -246,7 +248,6 @@ public class PieceScript : MonoBehaviour
         Instantiate(particle, transform.position, transform.rotation);
         Instantiate(evolutionTarget, transform.position, transform.rotation);
         Destroy(gameObject);
-
     }
 
     IEnumerator Merge(Collider other)
