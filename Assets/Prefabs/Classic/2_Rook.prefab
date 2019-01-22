@@ -227,9 +227,9 @@ MonoBehaviour:
   ID: 2
   enemy: 0
   SFX: {fileID: 5300601313207032700, guid: 96e3fba407d36804f921a32c9d4c1b16, type: 3}
-  evolveSound: {fileID: 1236119842313493971, guid: 8af8ffa0a57522b40ad856c392752b51,
+  evolveSound: {fileID: 9079123957101035226, guid: 22dfe33f0e3e56548b7fb318b138342f,
     type: 3}
-  mergeSound: {fileID: 1236119842313493971, guid: 8af8ffa0a57522b40ad856c392752b51,
+  mergeSound: {fileID: 9079123957101035226, guid: 22dfe33f0e3e56548b7fb318b138342f,
     type: 3}
   particle: {fileID: 2361788018273825549, guid: 3d886d4adf29360458cec9be5975a905,
     type: 3}
