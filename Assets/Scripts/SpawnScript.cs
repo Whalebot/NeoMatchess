@@ -35,7 +35,6 @@ public class SpawnScript : MonoBehaviour
         
              
         text.text = "Score: " + points;
-        if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         if (createObject) { createObject = false; SpawnRandom();  }
     }
 

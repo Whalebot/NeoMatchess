@@ -41,6 +41,11 @@ public class PieceScript : MonoBehaviour
     {
         materialScript = transform.GetChild(0).GetComponent<MaterialScript>();
         GameDataManager.saveGame = true;
+        InputManager.Instance.mouseClick += Click;
+    }
+    private void OnDisable()
+    {
+        InputManager.Instance.mouseClick -= Click;
     }
 
     // Update is called once per frame
@@ -63,108 +68,171 @@ public class PieceScript : MonoBehaviour
             }
 
 
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            moveRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //moveRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 
-            //Touch input
-            if (SpawnScript.touchInput && Input.touchCount > 0)
-            {
-                touchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                moveTouchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                if (Input.touchCount == 1)
-                {
-                    if (Physics.Raycast(moveTouchRay, out touchMovehit, 100f, moveMask) && selected)
-                    {
-                        if (touchMovehit.collider.CompareTag("MoveOption"))
-                        {
-                            if (touchMovehit.collider.gameObject.GetComponent<MoveOptions>().isActive)
-                            {
-                                if (!pathFound)
-                                {
-                                    path[0] = (transform.position + Vector3.up * selectedOffset);
-                                    path[1] = (touchMovehit.collider.transform.position + Vector3.up * selectedOffset);
-                                    path[2] = (touchMovehit.collider.transform.position);
-                                    pathFound = true;
-                                }
-                            }
-                            else if (selected && !pathFound)
-                            {
-                                selected = false;
-                                SpawnScript.hasSelected = false;
-                            }
-                        }
-                        else if (selected && !pathFound)
-                        {
-                            selected = false;
-                            SpawnScript.hasSelected = false;
-                        }
-                    }
-                }
+            ////Touch input
+            //if (SpawnScript.touchInput)
+            //{
+            //    //    if (Input.touchCount > 0)
+            //    //    {
+            //    //        touchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            //    //        moveTouchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            //    //        if (Input.touchCount == 1)
+            //    //        {
+            //    //            if (Physics.Raycast(moveTouchRay, out touchMovehit, 100f, moveMask) && selected)
+            //    //            {
+            //    //                if (touchMovehit.collider.CompareTag("MoveOption"))
+            //    //                {
+            //    //                    if (touchMovehit.collider.gameObject.GetComponent<MoveOptions>().isActive)
+            //    //                    {
+            //    //                        if (!pathFound)
+            //    //                        {
+            //    //                            path[0] = (transform.position + Vector3.up * selectedOffset);
+            //    //                            path[1] = (touchMovehit.collider.transform.position + Vector3.up * selectedOffset);
+            //    //                            path[2] = (touchMovehit.collider.transform.position);
+            //    //                            pathFound = true;
+            //    //                        }
+            //    //                    }
+            //    //                    else if (selected && !pathFound)
+            //    //                    {
+            //    //                        selected = false;
+            //    //                        SpawnScript.hasSelected = false;
+            //    //                    }
+            //    //                }
+            //    //                else if (selected && !pathFound)
+            //    //                {
+            //    //                    selected = false;
+            //    //                    SpawnScript.hasSelected = false;
+            //    //                }
+            //    //            }
+            //    //        }
 
-                else if (Physics.Raycast(touchRay, out moveHit) && !SpawnScript.hasSelected)
-                {
-                    if (moveHit.collider.gameObject == gameObject.transform.GetChild(0).gameObject || moveHit.collider.gameObject == gameObject.transform.GetChild(1).gameObject)
-                    {
-                        selected = true;
-                        if (SFX != null) Instantiate(SFX, transform.position, transform.rotation);
-                        CameraScript.camTarget = gameObject;
-                        SpawnScript.hasSelected = true;
-                    }
-                    else { selected = false; SpawnScript.hasSelected = false; }
-                }
-                else if (selected && SpawnScript.hasSelected) { selected = false; SpawnScript.hasSelected = false; }
-            }
-            //Normal input
-            else if (Input.GetMouseButtonDown(0))
-            {
-                if (Physics.Raycast(moveRay, out moveHit, 100f, moveMask) && selected)
-                {
-                    if (moveHit.collider.CompareTag("MoveOption"))
-                    {
-                        if (moveHit.collider.gameObject.GetComponent<MoveOptions>().isActive)
-                        {
-                            if (!pathFound)
-                            {
-                                path[0] = (transform.position + Vector3.up * selectedOffset);
-                                path[1] = (moveHit.collider.transform.position + Vector3.up * selectedOffset);
-                                path[2] = (moveHit.collider.transform.position);
-                                pathFound = true;
-                            }
-                        }
-                        else if (selected && !pathFound)
-                        {
-                            selected = false;
-                            SpawnScript.hasSelected = false;
-                        }
-                    }
-                    else if (selected && !pathFound)
-                    {
-                        selected = false;
-                        SpawnScript.hasSelected = false;
-                    }
-                }
+            //    //        else if (Physics.Raycast(touchRay, out moveHit) && !SpawnScript.hasSelected)
+            //    //        {
+            //    //            if (moveHit.collider.gameObject == gameObject.transform.GetChild(0).gameObject || moveHit.collider.gameObject == gameObject.transform.GetChild(1).gameObject)
+            //    //            {
+            //    //                selected = true;
+            //    //                if (SFX != null) Instantiate(SFX, transform.position, transform.rotation);
+            //    //                CameraScript.camTarget = gameObject;
+            //    //                SpawnScript.hasSelected = true;
+            //    //            }
+            //    //            else { selected = false; SpawnScript.hasSelected = false; }
+            //    //        }
+            //    //        else if (selected && SpawnScript.hasSelected) { selected = false; SpawnScript.hasSelected = false; }
+            //    //    }
+            //}
+            ////Normal input
+            //else
+            //{
+            //    if (Input.GetMouseButtonDown(0))
+            //    {
+            //        if (Physics.Raycast(moveRay, out moveHit, 100f, moveMask) && selected)
+            //        {
+            //            if (moveHit.collider.CompareTag("MoveOption"))
+            //            {
+            //                if (moveHit.collider.gameObject.GetComponent<MoveOptions>().isActive)
+            //                {
+            //                    if (!pathFound)
+            //                    {
+            //                        path[0] = (transform.position + Vector3.up * selectedOffset);
+            //                        path[1] = (moveHit.collider.transform.position + Vector3.up * selectedOffset);
+            //                        path[2] = (moveHit.collider.transform.position);
+            //                        pathFound = true;
+            //                    }
+            //                }
+            //                else if (selected && !pathFound)
+            //                {
+            //                    selected = false;
+            //                    SpawnScript.hasSelected = false;
+            //                }
+            //            }
+            //            else if (selected && !pathFound)
+            //            {
+            //                selected = false;
+            //                SpawnScript.hasSelected = false;
+            //            }
+            //        }
 
-                else if (Physics.Raycast(ray, out hit) && !SpawnScript.hasSelected && !SpawnScript.isMoving)
-                {
-                    if (hit.collider.transform.IsChildOf(transform))
-                    //     if (hit.collider.gameObject == gameObject.transform.GetChild(0).gameObject || hit.collider.gameObject == gameObject.transform.GetChild(1).gameObject)
-                    {
-                        selected = true;
-                        if (SFX != null) Instantiate(SFX, transform.position, transform.rotation);
-                        CameraScript.camTarget = gameObject;
-                        SpawnScript.hasSelected = true;
-                    }
-                    else { selected = false; SpawnScript.hasSelected = false; }
-                }
-                else if (selected && SpawnScript.hasSelected) { selected = false; SpawnScript.hasSelected = false; }
+            //        else if (Physics.Raycast(ray, out hit) && !SpawnScript.hasSelected && !SpawnScript.isMoving)
+            //        {
+            //            if (hit.collider.transform.IsChildOf(transform))
+            //            //     if (hit.collider.gameObject == gameObject.transform.GetChild(0).gameObject || hit.collider.gameObject == gameObject.transform.GetChild(1).gameObject)
+            //            {
+            //                selected = true;
+            //                if (SFX != null) Instantiate(SFX, transform.position, transform.rotation);
+            //                CameraScript.camTarget = gameObject;
+            //                SpawnScript.hasSelected = true;
+            //            }
+            //            else { selected = false; SpawnScript.hasSelected = false; }
+            //        }
+            //        else if (selected && SpawnScript.hasSelected) { selected = false; SpawnScript.hasSelected = false; }
 
-            }
+            //    }
+            //}
         }
 
 
     }
 
+    void Click(Vector2 pos)
+    {
+        if (SpawnScript.isMoving) { Debug.Log("click while moving"); return; }
+        touchRay = Camera.main.ScreenPointToRay(pos);
+        moveTouchRay = Camera.main.ScreenPointToRay(pos);
+        if (Physics.Raycast(moveTouchRay, out touchMovehit, 100f, moveMask) && selected)
+        {
+            Debug.Log("Try Move");
+            if (touchMovehit.collider.CompareTag("MoveOption"))
+            {
+                if (touchMovehit.collider.gameObject.GetComponent<MoveOptions>().isActive)
+                {
+                    if (!pathFound)
+                    {
+                        path[0] = (transform.position + Vector3.up * selectedOffset);
+                        path[1] = (touchMovehit.collider.transform.position + Vector3.up * selectedOffset);
+                        path[2] = (touchMovehit.collider.transform.position);
+                        pathFound = true;
+                        InputManager.Instance.ClickSFX();
+                    }
+                }
+                else if (selected && !pathFound)
+                {
+                    selected = false;
+                    SpawnScript.hasSelected = false;
+                }
+            }
+            else if (selected && !pathFound)
+            {
+                selected = false;
+                SpawnScript.hasSelected = false;
+            }
+        }
+
+        else if (Physics.Raycast(touchRay, out moveHit) && !SpawnScript.hasSelected && !SpawnScript.isMoving)
+        {
+            Rigidbody rb = moveHit.rigidbody;
+            if (rb != null)
+                Debug.Log(rb.gameObject);
+            bool foundRB = rb != null;
+            bool foundThis = false;
+            if (foundRB)
+                foundThis = moveHit.rigidbody.gameObject == gameObject;
+
+            if (foundThis)
+            {
+                selected = true;
+                if (SFX != null) Instantiate(SFX, transform.position, transform.rotation);
+                InputManager.Instance.ClickSFX();
+                CameraScript.camTarget = gameObject;
+                SpawnScript.hasSelected = true;
+            }
+            else { selected = false; SpawnScript.hasSelected = false; }
+        }
+        else if (selected && SpawnScript.hasSelected) { selected = false; SpawnScript.hasSelected = false; }
+
+    }
     private void FixedUpdate()
     {
         if (pathFound)
@@ -196,7 +264,7 @@ public class PieceScript : MonoBehaviour
                 if (Vector3.Distance(transform.position, path[2]) < marginOfError)
                 {
                     transform.position = path[2]; reachedPath[2] = true; selected = false; pathFound = false; reachedPath[0] = false; reachedPath[1] = false; reachedPath[2] = false;
-                    if (!executeOnce) { SpawnScript.createObject = true;  }
+                    if (!executeOnce) { SpawnScript.createObject = true; }
                     SpawnScript.hasSelected = false;
                     SpawnScript.isMoving = false;
 

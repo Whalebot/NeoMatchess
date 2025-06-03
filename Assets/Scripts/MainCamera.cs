@@ -20,17 +20,17 @@ public class MainCamera : MonoBehaviour
     {
 
 
-        if (Input.GetMouseButtonDown(1)) { startX = Input.mousePosition.x; }
-        if (Input.GetMouseButton(1))
-        {
-            print(Input.mousePosition.x - startX);
-            pivotPoint.transform.Rotate(0, (Input.mousePosition.x - startX)*rotationSpeed*Time.deltaTime, 0);
-            startX = Input.mousePosition.x;
-        }
-        if (Input.GetMouseButtonDown(2))
-        {
-            transform.position = startPos;
-        }
+        //if (Input.GetMouseButtonDown(1)) { startX = Input.mousePosition.x; }
+        //if (Input.GetMouseButton(1))
+        //{
+        //    print(Input.mousePosition.x - startX);
+        //    pivotPoint.transform.Rotate(0, (Input.mousePosition.x - startX)*rotationSpeed*Time.deltaTime, 0);
+        //    startX = Input.mousePosition.x;
+        //}
+        //if (Input.GetMouseButtonDown(2))
+        //{
+        //    transform.position = startPos;
+        //}
     }
     private void LateUpdate()
     {

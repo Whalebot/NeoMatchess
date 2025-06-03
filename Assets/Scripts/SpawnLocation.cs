@@ -30,9 +30,6 @@ public class SpawnLocation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("q")) LoadGame();
-        if (Input.GetKeyDown("s")) SaveGame();
-        if (Input.GetKeyDown("w")) print("Position " + positionID + " contains " + GameDataManager.savedPiece[positionID - 1]);
         if (!hasPiece)
         {
         }

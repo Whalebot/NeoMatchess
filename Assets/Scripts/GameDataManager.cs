@@ -47,13 +47,10 @@ public class GameDataManager : MonoBehaviour
     
         string jsonData = JsonUtility.ToJson(gameData, true);
         File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     } 
     private void Update()
     {
         if (saveGame) { saveGame = false;  SaveData(); }
-        if (Input.GetKeyDown("o")) SaveData();
-        if (Input.GetKeyDown("p")) LoadData();
-        if (Input.GetKeyDown("i")) ResetData();
     }
 }

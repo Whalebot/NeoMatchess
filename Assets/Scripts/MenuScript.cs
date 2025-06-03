@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
@@ -34,12 +35,17 @@ public class MenuScript : MonoBehaviour
 
     void ChangeGameSpeed()
     {
-        if (gameSpeedSlider.value == 0) gameSettings.moveSpeed = gameSettings.speed0;
+        if (gameSpeedSlider.value == 0) gameSettings.moveSpeed = gameSettings.speed2;
         else if (gameSpeedSlider.value == 1) gameSettings.moveSpeed = gameSettings.speed1;
-        else if (gameSpeedSlider.value == 2) gameSettings.moveSpeed = gameSettings.speed2;
+        else if (gameSpeedSlider.value == 2) gameSettings.moveSpeed = gameSettings.speed0;
     }
     void ChangeMasterVolume() { audioMixer.SetFloat("masterVolume", masterVolumeSlider.value); }
     void ChangeSFXVolume() { audioMixer.SetFloat("sfxVolume", sfxSlider.value); }
     void CloseMenu() { GameSettings.isPaused = false; pauseMenu.SetActive(false); menuButton.SetActive(true); }
     void OpenMenu() { GameSettings.isPaused = true; pauseMenu.SetActive(true); menuButton.SetActive(false); }
+   public void MainMenu() { SceneManager.LoadScene(0); }
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

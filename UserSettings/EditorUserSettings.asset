@@ -5,26 +5,35 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+    GraphicsSettingsInspector_UserSettings:
+      value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b07a68ffab74f9ee2a3a30300cea1a11320d0beb1a0c25f7060f494b4cdf1b18f3045e38cb5ad8
+      flags: 0
     RecentlyUsedSceneGuid-0:
-      value: 52550c5f51515c5f5f5d547416735a441316197e7c2976632f7c1b31b3e3646a
-      flags: 0
-    RecentlyUsedSceneGuid-1:
-      value: 5a03555050070c0b0c0a5a7416270844124f197d28792561282f4b32e7b46c61
-      flags: 0
-    RecentlyUsedSceneGuid-2:
-      value: 5755505357020b5e0c0a557513265b44434f1d2b742a72612c7c1f37e3e46c3b
-      flags: 0
-    RecentlyUsedSceneGuid-3:
       value: 50540054060651585f5c0a7412725c4447154b7e2f2b76332f2c1f32b0e1356b
       flags: 0
-    RecentlyUsedSceneGuid-4:
+    RecentlyUsedSceneGuid-1:
       value: 52010c5250040d020e085d771477064845154c2e7d2e7e62292d4a6ae4b8656a
       flags: 0
-    RecentlyUsedSceneGuid-5:
+    RecentlyUsedSceneGuid-2:
       value: 5107575350025a5f55580e774270084441161d28747e7666292c4532e4b8616c
       flags: 0
-    RecentlyUsedSceneGuid-6:
+    RecentlyUsedSceneGuid-3:
       value: 50530200520659095e5e097647265c44134f1b737c7a25352b7e4e6bb0e2676e
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 52550c5f51515c5f5f5d547416735a441316197e7c2976632f7c1b31b3e3646a
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 5a03555050070c0b0c0a5a7416270844124f197d28792561282f4b32e7b46c61
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 0155025506515a0d595a5b7011770b4442164c7f7f2c23692e2f4d36e1e4653e
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5755505357020b5e0c0a557513265b44434f1d2b742a72612c7c1f37e3e46c3b
+      flags: 0
+    lightmappingBakingProfile:
+      value: 51
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
@@ -43,4 +52,6 @@ EditorUserSettings:
   m_VCHierarchyOverlayIcons: 1
   m_VCOtherOverlayIcons: 1
   m_VCAllowAsyncUpdate: 1
+  m_VCScanLocalPackagesOnConnect: 1
   m_ArtifactGarbageCollection: 1
+  m_CompressAssetsOnImport: 1
